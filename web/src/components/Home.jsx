@@ -5,10 +5,15 @@ import ASI from './ASI';
 
 export default function Home() {
   const [showMicrosoftSubCards, setShowMicrosoftSubCards] = useState(false);
+  const [showAlibabaSubCards, setShowAlibabaSubCards] = useState(false);
   const [showASI, setShowASI] = useState(false);
 
   const handleMicrosoftClick = () => {
     setShowMicrosoftSubCards(true);
+  };
+
+  const handleAlibabaClick = () => {
+    setShowAlibabaSubCards(true);
   };
 
   const handleASIClick = () => {
@@ -17,6 +22,7 @@ export default function Home() {
 
   const handleBackToMain = () => {
     setShowMicrosoftSubCards(false);
+    setShowAlibabaSubCards(false);
     setShowASI(false);
   };
 
@@ -95,12 +101,12 @@ export default function Home() {
           gap: '24px',
           marginBottom: '40px'
         }}>
-          {!showMicrosoftSubCards ? (
+          {!showMicrosoftSubCards && !showAlibabaSubCards ? (
             // 主要卡片
             <>
-              {/* Alibaba 卡片 */}
-              <Link 
-                to="/samples"
+              {/* Alibaba 卡片 - 修改为点击事件 */}
+              <div 
+                onClick={handleAlibabaClick}
                 style={{
                   textDecoration: 'none',
                   display: 'block'
@@ -151,7 +157,7 @@ export default function Home() {
                   阿里云 相关项目经历<br/>
                 </p>
               </div>
-              </Link>
+              </div>
 
               {/* Microsoft 卡片 - 修改为点击事件 */}
               <div 
@@ -207,6 +213,152 @@ export default function Home() {
                 </p>
               </div>
               </div>
+            </>
+          ) : showAlibabaSubCards ? (
+            // Alibaba 二级卡片
+            <>
+              <div style={{
+                gridColumn: '1 / -1',
+                textAlign: 'center',
+                marginBottom: '20px'
+              }}>
+                <button
+                  onClick={handleBackToMain}
+                  style={{
+                    background: 'rgba(255,255,255,0.2)',
+                    color: '#ffffff',
+                    border: '1px solid rgba(255,255,255,0.3)',
+                    padding: '12px 32px',
+                    borderRadius: '8px',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.3)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.2)';
+                  }}
+                >
+                  ← 返回主页
+                </button>
+              </div>
+
+              {/* ENI 卡片 */}
+              <Link 
+                to="/eni"
+                style={{
+                  textDecoration: 'none',
+                  display: 'block'
+                }}
+              >
+                <div style={{
+                  background: '#ffffff',
+                  borderRadius: '16px',
+                  padding: '32px',
+                  boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  height: '200px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-8px)';
+                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
+                }}
+              >
+                <div style={{
+                  fontSize: '48px',
+                  marginBottom: '16px'
+                }}>
+                  🌐
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  color: '#1f2937',
+                  margin: '0 0 8px 0'
+                }}>
+                  ENI
+                </h3>
+                <p style={{
+                  fontSize: '14px',
+                  color: '#6b7280',
+                  textAlign: 'center',
+                  margin: 0,
+                  lineHeight: '1.5'
+                }}>
+                  弹性网络接口<br/>
+                  网络虚拟化项目
+                </p>
+              </div>
+              </Link>
+
+              {/* Cross-Zone Migration 卡片 */}
+              <Link 
+                to="/cross-zone-migration"
+                style={{
+                  textDecoration: 'none',
+                  display: 'block'
+                }}
+              >
+                <div style={{
+                  background: '#ffffff',
+                  borderRadius: '16px',
+                  padding: '32px',
+                  boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  height: '200px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-8px)';
+                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
+                }}
+              >
+                <div style={{
+                  fontSize: '48px',
+                  marginBottom: '16px'
+                }}>
+                  🔄
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  color: '#1f2937',
+                  margin: '0 0 8px 0'
+                }}>
+                  Cross-Zone Migration
+                </h3>
+                <p style={{
+                  fontSize: '14px',
+                  color: '#6b7280',
+                  textAlign: 'center',
+                  margin: 0,
+                  lineHeight: '1.5'
+                }}>
+                  跨可用区迁移<br/>
+                  高可用架构设计
+                </p>
+              </div>
+              </Link>
             </>
           ) : (
             // Microsoft 二级卡片
